@@ -12,61 +12,65 @@ struct RegistrationView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        VStack {
-            Spacer()
-            Image("thread-app-icon")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 130, height: 130)
-                .padding(.vertical, 30)
-            
+        ZStack {
+            Color.black
+                .ignoresSafeArea(.all)
             VStack {
-                TextField("Enter your email", text: $viewModel.email)
-                    .modifier(ThreadsTextFieldModifier())
+                Spacer()
+                Image("thread-app-icon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 130, height: 130)
+                    .padding(.vertical, 30)
                 
-                SecureField("Enter your password", text: $viewModel.password)
-                    .modifier(ThreadsTextFieldModifier())
-                
-                TextField("Enter your full name", text: $viewModel.fullname)
-                    .modifier(ThreadsTextFieldModifier())
-                
-                TextField("Enter your username", text: $viewModel.username)
-                    .modifier(ThreadsTextFieldModifier())
-                
-            }
-            
-            Button {
-                Task { try await viewModel.createUser() }
-            } label: {
-                Text("Sgin Up")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.white)
-                    .frame(width: 330, height: 62)
-                    .background(.black)
-                    .cornerRadius(10)
-            }
-            
-            .padding(.vertical, 50)
-            Spacer()
-            Spacer()
-            
-            Divider()
-            Button {
-                dismiss()
-            } label: {
-                HStack(spacing: 3) {
-                    Text("Already have an account?")
+                VStack {
+                    TextField("Enter your email", text: $viewModel.email)
+                        .autocapitalization(.none)
+                        .modifier(ThreadsTextFieldModifier())
                     
-                    Text("Sign In")
-                        .fontWeight(.semibold)
+                    SecureField("Enter your password", text: $viewModel.password)
+                        .modifier(ThreadsTextFieldModifier())
+                    
+                    TextField("Enter your full name", text: $viewModel.fullname)
+                        .modifier(ThreadsTextFieldModifier())
+                    
+                    TextField("Enter your username", text: $viewModel.username)
+                        .autocapitalization(.none)
+                        .modifier(ThreadsTextFieldModifier())
+                    
                 }
-                .font(.footnote)
-                .foregroundColor(.black)
+                
+                Button {
+                    Task { try await viewModel.createUser() }
+                } label: {
+                    Text("Sgin Up")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .frame(width: 330, height: 62)
+                        .background(LinearGradient(gradient: Gradient(colors: [.red, .orange]), startPoint: .leading, endPoint: .trailing))
+                        .cornerRadius(10)
+                }
+                
+                .padding(.vertical, 50)
+                Spacer()
+                Spacer()
+                
+                Divider()
+                Button {
+                    dismiss()
+                } label: {
+                    HStack(spacing: 3) {
+                        Text("Already have an account?")
+                        
+                        Text("Sign In")
+                            .fontWeight(.semibold)
+                    }
+                    .font(.footnote)
+                    .foregroundColor(.white)
+                }
+                .padding(.vertical, 17)
             }
-            .padding(.vertical, 17)
-
-
         }
     }
 }

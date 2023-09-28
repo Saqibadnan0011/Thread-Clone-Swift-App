@@ -13,7 +13,7 @@ struct ThreadsTextFieldModifier: ViewModifier {
             .font(.subheadline)
             .padding(12)
             .frame(width: 330, height: 62)
-            .background(.gray).opacity(0.4)
+            .background(LinearGradient(gradient: Gradient(colors: [.red, .orange]), startPoint: .leading, endPoint: .trailing)).opacity(0.6)
             .cornerRadius(10)
             .padding(.horizontal, 24)
     }

@@ -31,8 +31,11 @@ struct ProfileView: View {
                                     .font(.footnote)
                             }
                             
-                            Text("An aspiring software engineer")
-                                .font(.footnote)
+                            if let bio = currentUser?.bio {
+                                Text(bio)
+                                    .font(.footnote)
+                            }
+                            
                             Text("1k Followers")
                                 .font(.caption)
                                 .foregroundColor(.gray)
