@@ -23,7 +23,6 @@ class AuthService {
         do {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
                 self.userSession = result.user
-                print("DEBUG: created user\(result.user.uid)")
             } catch {
                 print("DEBUG: failed to create user\(error.localizedDescription)")
             }
@@ -33,7 +32,7 @@ class AuthService {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             self.userSession = result.user
-            print("DEBUG: created user\(result.user.uid)")
+            try await uploadUserData(withemail: email, fullname: fullname, username: username, id: result.user.uid)
         } catch {
             print("DEBUG: failed to create user\(error.localizedDescription)")
         }
