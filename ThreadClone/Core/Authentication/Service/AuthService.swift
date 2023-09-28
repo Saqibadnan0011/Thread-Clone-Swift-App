@@ -7,6 +7,7 @@
 
 import FirebaseAuth
 import Firebase
+import FirebaseFirestoreSwift
 
 class AuthService {
     @Published var userSession: FirebaseAuth.User?
@@ -40,5 +41,13 @@ class AuthService {
     func signOut() {
         try? Auth.auth().signOut()
         self.userSession = nil
+    }
+    
+    //func to upload user data
+    @MainActor
+    private func uploadUserData(withemail email: String, fullname: String, username: String, id: String) async throws {
+        let user = User(id: id, fullname: fullname, email: email, username: username)
+        guard let userData = try? Firestore.Encoder().encode(user) else { return }
+        try await Firestore.firestore().collection("users").document(id).setData(userData)
     }
 }
