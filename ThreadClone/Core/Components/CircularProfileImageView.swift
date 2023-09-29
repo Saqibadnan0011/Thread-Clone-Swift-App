@@ -9,11 +9,15 @@ import SwiftUI
 
 struct CircularProfileImageView: View {
     var body: some View {
-        Image("saqib")
-            .resizable()
-            .scaledToFill()
-            .frame(width: 40, height: 40)
+        ZStack {
+            Color.black
+                .ignoresSafeArea(.all)
+            Image("saqib")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 40, height: 40)
             .clipShape(Circle())
+        }
     }
 }
 

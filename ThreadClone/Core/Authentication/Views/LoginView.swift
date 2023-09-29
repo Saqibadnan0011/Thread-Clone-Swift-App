@@ -18,7 +18,7 @@ struct LoginView: View {
                     .ignoresSafeArea(.all)
                 VStack {
                     Spacer()
-                    Image("thread-app-icon")
+                    Image("thread-icon")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 130, height: 130)
@@ -52,9 +52,9 @@ struct LoginView: View {
                         Text("Login")
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .frame(width: 330, height: 62)
-                            .background(LinearGradient(gradient: Gradient(colors: [.red, .orange]), startPoint: .leading, endPoint: .trailing))
+                            .background(.white)
                             .cornerRadius(10)
                     }
                     Spacer()

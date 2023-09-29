@@ -9,7 +9,12 @@ import SwiftUI
 
 struct ActivityView: View {
     var body: some View {
-        Text("Activity!")
+        ZStack {
+            Color.black
+                .ignoresSafeArea(.all)
+            Text("Activity!")
+                .foregroundColor(.white)
+        }
     }
 }
 

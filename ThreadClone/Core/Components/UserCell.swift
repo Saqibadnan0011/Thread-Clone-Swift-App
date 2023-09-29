@@ -9,28 +9,33 @@ import SwiftUI
 
 struct UserCell: View {
     var body: some View {
-        HStack {
-            CircularProfileImageView()
-            
-            VStack(alignment: .leading) {
-                Text("IOS Developer")
-                    .fontWeight(.semibold)
-                Text("Saqib Adnan")
-                    .font(.footnote)
-            }
-            .font(.footnote)
-            Spacer()
-            
-            Text("Follow")
-                .font(.subheadline)
-                .fontWeight(.semibold)
-                .frame(width: 100, height: 32)
+        ZStack {
+            Color.black
+                .ignoresSafeArea(.all)
+            HStack {
+                CircularProfileImageView()
+                
+                VStack(alignment: .leading) {
+                    Text("IOS Developer")
+                        .fontWeight(.semibold)
+                    Text("Saqib Adnan")
+                        .font(.footnote)
+                }
+                .font(.footnote)
                 .foregroundColor(.white)
-                .background(.black)
-                .cornerRadius(10)
+                Spacer()
+                
+                Text("Follow")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .frame(width: 100, height: 32)
+                    .foregroundColor(.black)
+                    .background(.white)
+                    .cornerRadius(10)
 
-        }//hstack
-        .padding(.horizontal)
+            }//hstack
+            .padding(.horizontal)
+        }
     }
 }
 
