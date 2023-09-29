@@ -96,13 +96,13 @@ struct ProfileView: View {
                         AuthService.shared.signOut()
                     } label: {
                         Image(systemName: "line.3.horizontal")
+                            .foregroundColor(.black)
                     }
 
                 }
             }
             .padding(.horizontal)
         }//navi
-        
     }
 }
 
