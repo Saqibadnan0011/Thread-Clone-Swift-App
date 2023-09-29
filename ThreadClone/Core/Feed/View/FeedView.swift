@@ -10,18 +10,22 @@ import SwiftUI
 struct FeedView: View {
     var body: some View {
         NavigationStack {
-            ScrollView {
-                LazyVStack {
-                    ForEach (0 ... 10, id: \.self) { thread in
-                        ThreadCell()
+            ZStack {
+                Color.black
+                    .ignoresSafeArea(.all)
+                ScrollView {
+                    LazyVStack {
+                        ForEach (0 ... 10, id: \.self) { thread in
+                            ThreadCell()
+                        }
                     }
                 }
+                .refreshable {
+                    print("DEBUG: refresh ")
+                }
+                .navigationTitle("Thread")
+                .navigationBarTitleDisplayMode(.inline)
             }
-            .refreshable {
-                print("DEBUG: refresh ")
-            }
-            .navigationTitle("Thread")
-            .navigationBarTitleDisplayMode(.inline)
         }//naviStack
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -29,7 +33,7 @@ struct FeedView: View {
                     
                 } label: {
                     Image(systemName: "arrow.counterclockwise")
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                 }
             }
 
