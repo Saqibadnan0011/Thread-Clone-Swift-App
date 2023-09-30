@@ -19,89 +19,94 @@ struct ProfileView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView (showsIndicators: false) {
-                VStack(spacing: 14) {
-                    HStack(alignment: .top) {
-                        VStack(alignment: .leading, spacing: 12) {
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(currentUser?.fullname ?? "")
-                                    .font(.title2)
-                                    .fontWeight(.semibold)
-                                Text(currentUser?.username ?? "")
-                                    .font(.footnote)
-                            }
-                            
-                            if let bio = currentUser?.bio {
-                                Text(bio)
-                                    .font(.footnote)
-                            }
-                            
-                            Text("1k Followers")
-                                .font(.caption)
-                                .foregroundColor(.gray)
-                        }
-                        Spacer()
-                        CircularProfileImageView()
-                    }
-                    Button {
-                        //action goes here
-                    } label: {
-                        Text("Follow")
-                            .font(.footnote)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .frame(width: 330, height: 64)
-                            .background(.black)
-                            .cornerRadius(10)
-                    }
-                    //user context list
-                    VStack {
-                        HStack {
-                            ForEach(ProfileThreadFilter.allCases) {filter in
-                                VStack {
-                                    Text(filter.title)
-                                        .font(.subheadline)
-                                        .fontWeight(selectedFilter == filter ? .semibold : .regular)
-                                    
-                                    if selectedFilter == filter {
-                                        Rectangle()
-                                            .foregroundColor(.black)
-                                            .frame(width: 180, height: 1)
-                                            .matchedGeometryEffect(id: "Item", in: animation)
-                                    } else {
-                                        Rectangle()
-                                            .foregroundColor(.clear)
-                                            .frame(width: 180, height: 1)
-                                    }//statement
+            ZStack {
+                Color.black
+                    .ignoresSafeArea(.all)
+                ScrollView (showsIndicators: false) {
+                    VStack(spacing: 14) {
+                        HStack(alignment: .top) {
+                            VStack(alignment: .leading, spacing: 12) {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(currentUser?.fullname ?? "")
+                                        .font(.title2)
+                                        .fontWeight(.semibold)
+                                    Text(currentUser?.username ?? "")
+                                        .font(.footnote)
                                 }
-                                .onTapGesture {
-                                    withAnimation(.spring()) {
-                                        selectedFilter = filter
+                                
+                                if let bio = currentUser?.bio {
+                                    Text(bio)
+                                        .font(.footnote)
+                                        .foregroundColor(.white).opacity(0.6)
+                                }
+                                
+                                Text("1k Followers")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                            }
+                            Spacer()
+                            CircularProfileImageView()
+                        }
+                        Button {
+                            //action goes here
+                        } label: {
+                            Text("Follow")
+                                .font(.footnote)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.black)
+                                .frame(width: 330, height: 64)
+                                .background(.white)
+                                .cornerRadius(10)
+                        }
+                        //user context list
+                        VStack {
+                            HStack {
+                                ForEach(ProfileThreadFilter.allCases) {filter in
+                                    VStack {
+                                        Text(filter.title)
+                                            .font(.subheadline)
+                                            .fontWeight(selectedFilter == filter ? .semibold : .regular)
+                                        
+                                        if selectedFilter == filter {
+                                            Rectangle()
+                                                .foregroundColor(.black)
+                                                .frame(width: 180, height: 1)
+                                                .matchedGeometryEffect(id: "Item", in: animation)
+                                        } else {
+                                            Rectangle()
+                                                .foregroundColor(.clear)
+                                                .frame(width: 180, height: 1)
+                                        }//statement
                                     }
-                                }
-                            }//loop
-                        }
-                        LazyVStack {
-                            ForEach(0 ... 10, id: \.self) { thread in
-                                ThreadCell()
+                                    .onTapGesture {
+                                        withAnimation(.spring()) {
+                                            selectedFilter = filter
+                                        }
+                                    }
+                                }//loop
                             }
-                        }
-                    }//list vstack
-                    .padding(.vertical, 10)
-                }
-            }//scrollview
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        AuthService.shared.signOut()
-                    } label: {
-                        Image(systemName: "line.3.horizontal")
-                            .foregroundColor(.black)
+                            LazyVStack {
+                                ForEach(0 ... 10, id: \.self) { thread in
+                                    ThreadCell()
+                                }
+                            }
+                        }//list vstack
+                        .padding(.vertical, 10)
                     }
+                }//scrollview
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            AuthService.shared.signOut()
+                        } label: {
+                            Image(systemName: "line.3.horizontal")
+                                .foregroundColor(.white)
+                        }
 
+                    }
                 }
-            }
             .padding(.horizontal)
+            }
         }//navi
     }
 }
