@@ -19,7 +19,6 @@ class ProfileViewModel: ObservableObject {
     private func setupSubscribers() {
         UserService.shared.$currentUser.sink { [weak self] user in
             self?.currentUser = user
-            print("DEBUG: bla bla bla\(user)")
         }.store(in: &cancellables)
     }
 }

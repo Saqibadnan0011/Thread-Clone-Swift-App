@@ -14,27 +14,32 @@ struct ExploreView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack {
-                Color.black
-                    .ignoresSafeArea(.all)
+            //ZStack {
+                //Color.black
+                    //.ignoresSafeArea(.all)
                 ScrollView {
                     LazyVStack {
                         ForEach(viewModel.users) { user in
-                            VStack {
-                                UserCell(user: user)
-                                
-                                Divider()
+                            NavigationLink(value: user) {
+                                VStack {
+                                    UserCell(user: user)
+                                    
+                                    Divider()
+                                }
+                                .padding(.vertical, 5)
                             }
-                            .padding(.vertical, 5)
                         }//loop
                     }
                 }
+                .navigationDestination(for: User.self, destination: { user in
+                    ProfileView()
+                })
                 .navigationTitle("Search")
                 .foregroundColor(.white)
                 .navigationBarTitleDisplayMode(.inline)
                 .searchable(text: $searchText, prompt: "Search")
                 //.foregroundColor(.gray)
-            }
+            //}
         }//navistack
     }
 }
