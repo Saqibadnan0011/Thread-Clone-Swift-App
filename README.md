@@ -24,3 +24,14 @@
   <li>Fetch all Register users</li>
   <li>Logout Functionality</li>
 </ul>
+<p>
+  <a target="_blank">
+    <img src="https://github.com/Saqibadnan0011/Thread-Clone-Swift-App/blob/main/App/login.png" alt="login-view" width="256" height="554" hspace="10" style="max-width: 100%"/>
+  </a>
+  <a target="_blank">
+    <img src="https://github.com/Saqibadnan0011/Thread-Clone-Swift-App/blob/main/App/Registration.png" alt="Register-view" width="256" height="554" hspace="10" style="max-width: 100%"/>
+  </a>
+  <a target="_blank">
+    <img src="https://github.com/Saqibadnan0011/Thread-Clone-Swift-App/blob/main/App/explore.png" alt="explore-view" width="256" height="554" hspace="10" style="max-width: 100%"/>
+  </a>
+</p>
