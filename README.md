@@ -5,7 +5,7 @@
 <p>Thread clone in Swiftui with MVVM model, Firebase for Login/Registration functinality and other Database</p>
 
 <ul>
-  <li>Using Firebase✨</li>
+  <li>Using Firebase</li>
   <ul>
     <li>Login with Email</li>
     <li>Registration with Email</li>
