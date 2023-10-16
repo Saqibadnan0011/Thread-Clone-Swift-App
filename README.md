@@ -2,7 +2,7 @@
 
 <img src="https://piunikaweb.com/wp-content/uploads/2023/07/Untitled-design-19.png" alt="thread-pic" />
 
-<p>Thread clone in Swiftui with MVVM model, Firebase for Login/Registration functinality and other Database</p>
+<p>Thread clone in Swiftui with MVVM model, Firebase Login/Registration functinality and other Database</p>
 
 <ul>
   <li>Using Firebase</li>
