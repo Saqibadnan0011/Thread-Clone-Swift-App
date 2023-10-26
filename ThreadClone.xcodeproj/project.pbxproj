@@ -99,17 +99,8 @@
 		182378252A8D1E2000A48A31 /* EditProfile */ = {
 			isa = PBXGroup;
 			children = (
-				182378262A8D1E5400A48A31 /* Views */,
 			);
 			path = EditProfile;
-			sourceTree = "<group>";
-		};
-		182378262A8D1E5400A48A31 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				182378272A8D1E7400A48A31 /* EditProfileView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		187D9D5A2AC629D6009B4B85 /* ViewModel */ = {
@@ -381,6 +372,7 @@
 		18BE62DC2A8C05DC0059A171 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				182378272A8D1E7400A48A31 /* EditProfileView.swift */,
 				18BE62DD2A8C05F20059A171 /* ProfileView.swift */,
 			);
 			path = View;
