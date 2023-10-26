@@ -14,9 +14,6 @@ struct ExploreView: View {
     
     var body: some View {
         NavigationStack {
-            //ZStack {
-                //Color.black
-                    //.ignoresSafeArea(.all)
                 ScrollView {
                     LazyVStack {
                         ForEach(viewModel.users) { user in
@@ -35,11 +32,8 @@ struct ExploreView: View {
                     ProfileView()
                 })
                 .navigationTitle("Search")
-                .foregroundColor(.white)
                 .navigationBarTitleDisplayMode(.inline)
                 .searchable(text: $searchText, prompt: "Search")
-                //.foregroundColor(.gray)
-            //}
         }//navistack
     }
 }
